@@ -23,3 +23,16 @@ https://www.cs.ubc.ca/~schmidtm/Courses/340-F17/L15.pdf
 **Regularization**  
 https://rubikscode.net/2020/10/12/back-to-machine-learning-basics-regularization/
 
+
+**Hyperparameter tuning**  
+Tree-structured Parzen Estimators (TPE) is the state-of-the-art for Bayesian optimization algorithms. 
+
+Covariance Matrix Adaptation Evolution Strategy (CMA-ES) is the state-of-the-art for evolutionary optimization algorithms. 
+
+Comparing the two, TPE tends to find a good set of hyperparameters with a smaller number of iterations, but CMA-ES tends to be better in actually finding the global optimum. 
+
+https://www.advian.fi/en/blog/best-tools-and-some-practices-for-machine-learning
+
+
+
+**Class weights**  

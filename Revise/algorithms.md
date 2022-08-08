@@ -19,6 +19,10 @@ https://stackabuse.com/gradient-boosting-classifiers-in-python-with-scikit-learn
 https://blog.mlreview.com/gradient-boosting-from-scratch-1e317ae4587d
 
 
+**XGBOOST**  
+https://neptune.ai/blog/xgboost-everything-you-need-to-know
+
+
 
 
 
