@@ -256,7 +256,8 @@ https://towardsdatascience.com/mad-over-mape-a86a8d831447
 
 ### **Classification** ###
 
-Before we dive into loss functions used in classification, we need to understand what Entropy is, as many loss functions are build using entropy.  
+Before we dive into loss functions used in classification, we need to understand what Entropy is, as many loss functions are built using entropy.  
+
 **What is Entropy?**  
     Simply put, it is basically the amount of information needed to reduce the uncertainty about a sample drawn from a probability distribution.
 
@@ -343,12 +344,7 @@ https://www.analyticsvidhya.com/blog/2019/08/detailed-guide-7-loss-functions-mac
 https://machinelearningmastery.com/how-to-choose-loss-functions-when-training-deep-learning-neural-networks/
 
 
-## Metrices ##
-
-*  **Regression**  
-
-
-* **Classification**  
+### Metrices ###
 
   * Binary Classification
 
@@ -405,5 +401,59 @@ Random Forest
 https://www.reddit.com/r/learnmachinelearning/comments/t8254n/what_is_the_loss_function_for_trees_and_random/
 
 Decision Tree  
-https://buggyprogrammer.com/how-to-calculate-the-decision-tree-loss-function/
+https://buggyprogrammer.com/how-to-calculate-the-decision-tree-loss-function/  
+
+
+MAP (Mean average precision)  
+https://blog.paperspace.com/mean-average-precision/amp/  
+https://www.v7labs.com/blog/mean-average-precision#:~:text=Mean%20Average%20Precision%20(mAP)%20is,to%20evaluate%20the%20their%20models.
+
+
+
+Blogs to check:  
+https://orchardbirds.github.io/bokbokbok/tutorials/log_cosh_loss.html
+https://www.cs.cmu.edu/~mgormley/courses/10701-f16/slides/lecture4.pdf  
+https://www.evergreeninnovations.co/blog-quantile-loss-function-for-machine-learning/  
+
+
+Keras losses  
+https://keras.io/api/losses/regression_losses/
+
+
+Find out SVM loss
+
+
+https://medium.com/@ShreyaG0127/gini-vs-entropy-how-do-they-find-the-optimum-split-e98acf48caa1
+
+
+https://towardsdatascience.com/a-tale-of-two-macro-f1s-8811ddcf8f04
+
+
+https://towardsdatascience.com/multi-class-metrics-made-simple-part-ii-the-f1-score-ebe8b2c2ca1
+
+https://h2o.ai/blog/regression-metrics-guide/
+
+https://medium.com/the-rise-of-unbelievable/what-is-evaluation-metrics-and-when-to-use-which-metrics-23d16446d690
+
+
+https://peltarion.com/knowledge-center/documentation/modeling-view/build-an-ai-model/loss-functions/focal-loss
+
+https://peltarion.com/knowledge-center/documentation/modeling-view/build-an-ai-model/loss-functions/squared-hinge
+
+
+https://www.baeldung.com/cs/mape-vs-wape-vs-wmape
+
+https://www.ibm.com/docs/en/cognos-analytics/11.1.0?topic=forecasting-statistical-details
+
+
+https://www.andreaperlato.com/tspost/statistica-background-for-time-series/#:~:text=The%20Mean%20Absolute%20Percentage%20Error,makes%20MASE%20a%20favor%20metrics.
+
+
+why note MAPE:
+https://towardsdatascience.com/forecast-kpi-rmse-mae-mape-bias-cdc5703d242d
+
+
+https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c
+
+https://towardsdatascience.com/multi-class-metrics-made-simple-the-kappa-score-aka-cohens-kappa-coefficient-bdea137af09c
 

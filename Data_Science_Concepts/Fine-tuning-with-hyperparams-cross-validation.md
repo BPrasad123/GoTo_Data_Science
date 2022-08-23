@@ -36,3 +36,16 @@ https://www.advian.fi/en/blog/best-tools-and-some-practices-for-machine-learning
 
 
 **Class weights**  
+
+
+
+**Algorithms and techniques used for optimization**  
+
+https://stats.stackexchange.com/questions/488194/how-gradient-descent-is-used-for-classification-with-decision-trees
+
+
+
+Blogs to check:  
+https://neptune.ai/blog/improving-machine-learning-deep-learning-models  
+https://www.advian.fi/en/blog/best-tools-and-some-practices-for-machine-learning  
+https://orchardbirds.github.io/bokbokbok/tutorials/log_cosh_loss.html  

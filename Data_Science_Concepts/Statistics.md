@@ -9,3 +9,9 @@ If you are given an exact probability and you want to find the probability of th
 Ref:  
 https://www.statisticshowto.com/probability-and-statistics/statistics-definitions/probability-distribution/poisson-distribution/
 
+
+
+
+Hypothesis and confidence interval:  
+https://medium.com/@ayanchowdhury00/hypothesis-theory-confidence-interval-briefed-overview-249392a13f9f
+
