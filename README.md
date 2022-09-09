@@ -1,31 +1,38 @@
-# Purpose #
+# PURPOSE #
 
-Store useful information pertaining to Data Science learning and projects curated from various sources.
+Share useful information pertaining to Data Science learning and practices curated from various sources along with own notes.
 
-[In Progress]
+Note: This repo is constantly updated, hence you may find some of the pages changing very frequently.
 
-# IMPORTANT DISCLAIMER #
-From time to time pieces of information were downloaded from many sites and posts shared on different social platforms. It was difficult task to keep track of original creators of the content. Hence, any document or piece of information you read in this repository is NOT created by the repo owner unless otherwise explicitly specified at the document level.
+# CONTENT TABLE #
 
-Moreover, this repo is only for educational purpose.
+| Directory   | About      |
+|----------|-------------|
+| [Python](/Python/) | Python tricks, cheat sheets and code |
+| [SQL](/SQL/) | SQL tricks |
+| [Statistics](/Statistics/) | Concepts, code and sources covering Statistics for Data Science |
+| [Visualization](/Visualization/) | Content and code for visualization | 
+| [Data Science Revision Notes](/Data_Science_Revision_Notes/) | Notes of Data Science concepts with curated references for detailed read |
+| [ML Structured Data](/ML_Structured_Data/) | Notes and code for ML for structured data |
+| [Computer Vision](/Computer_Vision/) | Computer Vision Notes and Code |
+| [NLP](/NLP/) | Curated NLP content |
+| [Vision Language Modeling](/Vision_Language_Modeling/) | Notes and code for Vision Language Modeling |
+| [Dataset Creation and Preprocessing](/Dataset_Creation_and_Preprocessing/) | Related to Dataset creation, annotation, labeling and preprocessing |
+| [Explainable AI](/Explainable_AI/) | Notes on explainable AI for model interpretation and explainability |
+| [MLOps and System Design](/MLOps_and_System_Design/) | MLOps and ML System Design related content |
+| [Production DS, Productivity and Testing](/Production_DS_Productivity_and_Testing/) | Productive and Production Data Science and Testing |
+| [Overall DS Learning Resources](/Overall_DS_Learning_Sources/) | Curated list of resources covering breadth and depth of data science |
+| [Blog Post Notes](/BlogPost_Notes/) | Short notes and annotations for blogs that I read |
+| [Interview Preparation](/Interview_Preparation/) | Notes and documents for interview preparation |
+| [AutoML](/AutoML/) | Anything related to AutoML |
+| [Use Cases](/Use_Cases/) | Machine Learning Use Cases and Learnings |
+| [Important Libraries](https://github.com/BPrasad123/Codebase/tree/main/Libraries) | Important libraries in practice |
+| [Codebase](https://github.com/BPrasad123/Codebase) | Reusable code for productive work |
+| [Whom to follow](/Whom_to_follow/) | My Favourite Gurus |
+| [Books](/Books/) | Books that I liked or would like to read for AI, ML|
+| [Project Management](/ProjectManagement/) | Notes and documents for project and product management |
 
-| Folder name   |      Purpose      |  Link |
-|----------|:-------------:|------:|
-| Python | Python tricks, cheat sheets and code | [Python](/Python/) |
-| SQL | SQL tricks | [SQL](/SQL/) |
-| Visualization | Content and code for visualization | [Visualization](/Visualization/)
-| Data_Science_Concepts | Notes of Data Science concepts with curated references for detailed read | [Data Science Concepts](/Data_Science_Concepts/) |
-| ML_Structured_Data | Notes and code for ML for structured data | [ML Structured Data](/ML_Structured_Data/) |
-| Computer_Vision | Computer Vision Notes and Code | [Computer Vision](/CV/) |
-| NLP | Curated NLP content | [NLP](/NLP/) |
-| Vision_Language_Modeling | Notes and code for Vision Language Modeling | [Vision Language Modeling](/Vision_Language_Modeling/) |
-| Data_Engineering | Anything related to Data Engineering | [Data Engineering](/Data_Engineering/) |
-| MLOps | MLOps related content | [MLOps](/MLOps/) |
-| BlogPost_Notes | Short notes and annotations for blogs that I read | [BlogPost Notes](/BlogPost_Notes/) |
-| Interview_Preparation | Notes and documents for interview preparation | [Interview Preparation](/Interview_Preparation/) |
-| Productivity | Hacks for productive work | [Productivity](/Productivity/) |
-| Project_Management | Notes and documents for project and product management | [Project Management](/ProjectManagement/) |
-
-
+# DISCLAIMER #
+From time to time pieces of information are curated from many sites and posts publicly shared on different social platforms. Many times original creator names were not present on shared posts/articles because of which you may not find the creator name for such content in this repo. Hence, any document or piece of information you read in this repository is NOT created by the repo owner or contributors (if there are any) unless otherwise explicitly specified at the document level. This repo is solely for educational purpose. If you find any conflict or mistakes, kindly feel free to make a Pull Request.
 
 Happy Learning!!
