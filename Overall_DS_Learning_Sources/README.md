@@ -4,6 +4,9 @@
 - Discover and organize thousands of resources to learn Machine Learning for free. [Link](https://aigents.co/learn)
 - Machine Learning Git Codebook helps you to learn machine learning by doing hands-on experience. [Link](https://github.com/edyoda/data-science-complete-tutorial)
 - MLZoomcamp by Alexey Grigorev: [Link](https://github.com/alexeygrigorev/mlbookcamp-code)
+- Hands-on Machine Learning with Sklearn [Link](https://www.danli.org/2021/06/06/hands-on-machine-learning/)
+- ML with Scikit learn MOOC [Link](https://inria.github.io/scikit-learn-mooc/)
+
 
 ## Algorithm Specific ##
 ### Graphical Models ###

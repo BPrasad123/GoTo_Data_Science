@@ -5,3 +5,6 @@ Slides: https://ytongdou.com/files/GNN_Fin_Fraud.pdf
 Code: https://github.com/pygod-team/pygod/blob/main/docs/tigergraph_pygod_demo.ipynb
 Video: https://www.youtube.com/watch?v=KhJuAvoC1ms&t=2183s
 
+## Projects ##
+- Use case specific tutorial: [Link](https://peltarion.com/knowledge-center/documentation/tutorials)
+- 

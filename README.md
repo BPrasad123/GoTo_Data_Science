@@ -12,7 +12,7 @@ Note: This repo is constantly updated, hence you may find some of the pages chan
 | [SQL](/SQL/) | SQL tricks |
 | [Statistics](/Statistics/) | Concepts, code and sources covering Statistics for Data Science |
 | [Visualization](/Visualization/) | Content and code for visualization | 
-| [Data Science Revision Notes](/Data_Science_Revision_Notes/) | Notes of Data Science concepts with curated references for detailed read |
+| [Data Science Notes](/Data_Science_Notes/) | Notes of Data Science learning notes with curated references for detailed read |
 | [ML Structured Data](/ML_Structured_Data/) | Notes and code for ML for structured data |
 | [Computer Vision](/Computer_Vision/) | Computer Vision Notes and Code |
 | [NLP](/NLP/) | Curated NLP content |
