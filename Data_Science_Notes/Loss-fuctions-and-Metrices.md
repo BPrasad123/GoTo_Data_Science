@@ -1,7 +1,7 @@
 **Table Structure**  
 
 - [Cost Function vs Loss Function vs Objective Function vs Metrices](#cost-function-vs-loss-function-vs-objective-function-vs-metrices)
-    - [$\textcolor{orange}{\text{Regression (can be applied for forecasting as well)}}$](#textcolororangetextregression-can-be-applied-for-forecasting-as-well)
+    - [Regression (can be applied for forecasting as well](#textcolororangetextregression-can-be-applied-for-forecasting-as-well)
       - [Regression: Loss Functions](#regression-loss-functions)
         - [MSE (Mean Squared Error)](#mse-mean-squared-error)
         - [MAE (Mean Absolute Error)](#mae-mean-absolute-error)
