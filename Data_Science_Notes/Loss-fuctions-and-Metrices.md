@@ -1,7 +1,7 @@
 **Table Structure**  
 
 - [Cost Function vs Loss Function vs Objective Function vs Metrices](#cost-function-vs-loss-function-vs-objective-function-vs-metrices)
-    - [Regression (can be applied for forecasting as well](#textcolororangetextregression-can-be-applied-for-forecasting-as-well)
+    - [Regression (can be applied for forecasting as well)](#textcolororangetextregression--can-be-applied-for-forecasting-as-well)
       - [Regression: Loss Functions](#regression-loss-functions)
         - [MSE (Mean Squared Error)](#mse-mean-squared-error)
         - [MAE (Mean Absolute Error)](#mae-mean-absolute-error)
@@ -47,11 +47,11 @@ It is used to evaluate the performance of the models on training as well as vali
 - Loss functions and their properties - [Link](http://www.cs.cornell.edu/courses/cs4780/2015fa/web/lecturenotes/lecturenote10.html)
 
 
-### $\textcolor{orange}{\text{Regression (can be applied for forecasting as well)}}$ ###
+### $\textcolor{orange}{\text{Regression}}$  (can be applied for forecasting as well) ###
 
-#### Regression: Loss Functions ####
+#### $\textcolor{orange}{\text{Regression: Loss Functions}}$ ####
 
-##### MSE (Mean Squared Error) #####
+##### $\textcolor{orange}{\text{MSE (Mean Squared Error)}}$ #####
 Also called as L2 loss, this quadratic function although amplifies the error between prediction and actual value when they are close, but is not robust to presence of outliers in the data. It tends to favour mean of the target data. If a dataset is without outliers, it tends to outperform the model trained with L1 loss. However, the performance is impacted if there are outliers in the dataset.
 
   When to use: If we you can remove undesired outliers in the dataset and want a stable solution, then you should try L2 or MSE loss function.  
@@ -62,7 +62,7 @@ Also called as L2 loss, this quadratic function although amplifies the error bet
 
   Comparison of L1 and L2 losses with and without outliers: [Link](http://rishy.github.io/ml/2015/07/28/l1-vs-l2-loss/)
   
-##### MAE (Mean Absolute Error) #####
+##### $\textcolor{orange}{\text{MAE (Mean Absolute Error)}}$ #####
 Also known as L1 loss, this linear loss function is robust to outliers. Since it is not a differentiable function at 0, finding gradients involve more complicated techniques such as approximation of derivatives.
 
   When to use: If we need outliers present in the dataset, then we should go for L1 loss. Moreover, if the target data follows multimodal distribution, then we can experiment with L1 loss.  
@@ -76,7 +76,7 @@ Also known as L1 loss, this linear loss function is robust to outliers. Since it
   - Some algorithm implementations use approximate derivative or subgradients for that point where the derivative is not defined: [Link](https://datascience.stackexchange.com/questions/61743/when-using-absolute-error-in-gradient-descent-how-to-calculate-the-derivative)
   - More details on subgradients: [Link](https://people.csail.mit.edu/dsontag/courses/ml16/slides/notes_convexity16.pdf)
 
-##### Poisson Loss #####
+##### $\textcolor{orange}{\text{Poisson Loss}}$ #####
 Poisson distribution:  
 A Poisson distribution helps us to predict the probability of certain events happening when you know how often the event has occurred. It gives us the probability of a given number of events happening in a fixed interval of time.
 
@@ -101,7 +101,7 @@ A Poisson distribution helps us to predict the probability of certain events hap
   - Article from Statisticshowto on poisson regression: [Link](https://www.statisticshowto.com/poisson-regression/)
   - Another article on poisson regression: [Link](https://peijin.medium.com/the-poisson-deviance-for-regression-d469b56959ce)  
 
-##### Huber Loss #####
+##### $\textcolor{orange}{\text{Huber Loss}}$ #####
 This function takes the good of both squared and absolute error loss functions. With a threshold error value, the loss is quadratic (or L2) for small error and linear (or L1) for larger error.  
 
   One big problem with using MAE is its constantly large gradient when using gradient decent for training. This can lead to missing minima at the end of training using gradient descent. While with MSE, gradient decreases as the loss gets close to its minima, making it more precise. Huber loss can be helpful here, as it curves around the minima which decreases the gradient.  
@@ -121,7 +121,7 @@ This function takes the good of both squared and absolute error loss functions. 
     - sklearn.linear_model.SGDRegressor with loss='huber'
     - sklearn.ensemble.GradientBoostingRegressor (loss{‘squared_error’, ‘absolute_error’, **‘huber’**, ‘quantile’}, default=’squared_error’)
 
-##### LogCosh #####
+##### $\textcolor{orange}{\text{LogCosh}}$ #####
   Log(cosh(x)) is approximately equal to (x ** 2) / 2 for small x and to abs(x) - log(2) for large x. This means that ‘logcosh’ works similar to the mean squared error, but will not be strongly affected by the occasional wildly incorrect prediction. Along with the advantages of Huber loss, it’s twice differentiable everywhere, unlike Huber loss. [Ref](https://www.xpertup.com/blog/deep-learning/types-of-loss-functions-part-2/)
 
   Log Cosh Loss addresses the small number of problems that can arise from using Mean Absolute Error due to its sharpness. Log(cosh(x)) is a way to very closely approximate Mean Absolute Error while retaining a 'smooth' function. [Ref](https://orchardbirds.github.io/bokbokbok/tutorials/log_cosh_loss.html)
@@ -132,7 +132,7 @@ This function takes the good of both squared and absolute error loss functions. 
     - LightGBM and XGBOOST with loss function from bokbokbok: [Link](https://orchardbirds.github.io/bokbokbok/tutorials/log_cosh_loss.html)
     - tf.keras.losses.LogCosh - [Link1](https://www.tensorflow.org/api_docs/python/tf/keras/losses/LogCosh), [Link2](https://github.com/christianversloot/machine-learning-articles/blob/main/how-to-use-logcosh-with-keras.md)
 
-##### Quantile Loss #####
+##### $\textcolor{orange}{\text{Quantile Loss}}$ #####
   Let us say, we are ok with over prediction but the lower prediction will cost us more in business. We could use a loss function that is minimized at the desired quantile. For example, a prediction for quantile 0.9 should over-predict 90% of the times.
 
   Examples of algorithms with Quantile Loss:  
@@ -145,8 +145,8 @@ This function takes the good of both squared and absolute error loss functions. 
   - Lecture Note - [Link](https://artowen.su.domains/courses/305a/lec18.pdf)
   - Detailed blog - [Link](https://towardsdatascience.com/quantile-regression-from-linear-models-to-trees-to-deep-learning-af3738b527c3)
 
-##### Special Loss functions #####
-###### Fair Loss ######
+##### $\textcolor{orange}{\text{Special Loss functions}}$ #####
+###### $\textcolor{orange}{\text{Fair Loss}}$ ######
     [ *TBD - Short explanation to be added* ]  
     - Why fair loss - [Link](https://www.aurelielemmens.com/debiasing-algorithms-fair-machine-learning/) 
     - For classification - [Link](https://andrewpwheeler.com/2021/12/22/learning-a-fair-loss-function-in-pytorch/)
@@ -154,7 +154,7 @@ This function takes the good of both squared and absolute error loss functions. 
     - Fair loss for pytorch - [Link](http://vi.le.gitlab.io/fair-loss/) 
 
 
-###### Custom loss functions ######
+###### $\textcolor{orange}{\text{Custom loss functions}}$ ######
     Based on the business problem we might want to change the loss function so as to penalize more for certain data records during training. We can build a custom loss function and pass that to the model while fitting on the training data. However, please note that the loss function has to be differentiable and compatible with the algorithm it will be used with. Moreover, not all the algorithms support custom loss functions, especially sklearn algorithms.
   
     * Sklearn algorithms -   
@@ -183,7 +183,7 @@ This function takes the good of both squared and absolute error loss functions. 
     - [Blog by Alex Miller](https://alex.miller.im/posts/linear-model-custom-loss-function-regularization-python/)
     - [Blog by Kiwi Damien](https://kiwidamien.github.io/custom-loss-vs-custom-scoring.html)
 
-###### Algorithm Specific Loss functions ######
+###### $\textcolor{orange}{\text{Algorithm Specific Loss functions}}$ ######
   **XGBOOST** supports following loss functions -  
     - reg:squarederror: regression with squared loss.
     - reg:squaredlogerror: regression with squared log loss. But because log function is employed, rmsle might output nan when prediction value is less than -1. Hence be careful for using this.
@@ -201,33 +201,33 @@ This function takes the good of both squared and absolute error loss functions. 
     - survival:cox, survival:aft, aft_loss_distribution: For survival related use cases  
   Reference: [XGBOOST Docs](https://xgboost.readthedocs.io/en/stable/parameter.html)  
 
-#### Regression: Evaluation Metrics ####
+#### $\textcolor{orange}{\text{Regression: Evaluation Metrics}}$ ####
 The evaluation metrics as used to measure the performance of the model. They do not need to be differentiable as during the evaluation the gradients are not calculated. And of course the loss function can be used as an evaluation metric to judge the performance of the model. Depending upon the problem scenario and context the corresponding metric can be used to compare the model performance as explained below.
 
-###### MSE ######
-###### MEA ######
-###### RMSE ######
+###### $\textcolor{orange}{\text{MSE}}$ ######
+###### $\textcolor{orange}{\text{MEA}}$ ######
+###### $\textcolor{orange}{\text{RMSE}}$ ######
   The RMSE gives more importance to the large deviation of forecasting error, resulting in a higher RMSE value. Using the RMSE metric when a few large incorrect predictions from a model on some items can be very costly to the business.  
 
   You should use RMSE with caution, because a few large deviations in forecasting errors can severely punish an otherwise accurate model. For example, if one item in a large dataset is severely under-forecasted or over-forecasted, the error in that item skews the entire RMSE metric drastically, and may make you reject an otherwise accurate model prematurely. For use cases where a few large deviations are not of importance, consider using wQL or WAPE.  
 
-###### R-square (also known as coefficient of determination) ######
+###### $\textcolor{orange}{\text{R-square}}$ (also known as coefficient of determination) ######
   How does the model perform against a simple prediction by taking average. With addition of new variable, the sum of squares that is in the denominator increases, hence the value of R square increases. However that does not mean the predictive power of the model increases. This will be a misleading conclusion.  
   Ref:  
   https://www.researchgate.net/post/Why_does_R_squared_increase_with_the_inclusion_of_an_interaction_term#:~:text=When%20you%20add%20another%20variable,increases%20your%20R%2Dsquared%20value.
 
-###### Adjusted R-square ######
+###### $\textcolor{orange}{\text{Adjusted R-square}}$ ######
   To rectify misleading behavior, R² is adjusted with the number of independent variables.
   
-###### MAPE (Mean Absolute Percentage Error) ######
+###### $\textcolor{orange}{\text{MAPE (Mean Absolute Percentage Error)}}$ ######
   It measures the error compared to the absolute value of the target value. However, if the actual value is zero, then it is impossible to calculate. Moreover, if the actual value is less and error is more, MAPE value is higher. The MAPE equally penalizes for under-forecasting or over-forecasting.  
   
   You can use MAPE for datasets where forecasting for all SKUs should be equally weighted regardless of sales volume. For example, a retailer may prefer to use the MAPE metric to equally emphasize forecasting errors on both items with low sales and items with high sales.  
 
-###### MASE (Mean Absolute Scaled Error) ######
+###### $\textcolor{orange}{\text{MASE (Mean Absolute Scaled Error)}}$ ######
   Ratio of MAE and average of naive error (if predicted number is same as the last instance). If less than 1 then it performs better than naive method. The MASE is a scale-free metric, which makes it useful for comparing models from different datasets. It is recommended to use the MASE metric when you are interested in measuring the impact of seasonality on your model. If your dataset does not have seasonality, we recommend using other metrics.
 
-###### Quantile Loss ######
+###### $\textcolor{orange}{\text{Quantile Loss}}$ ######
   Go with weighted QL measure at different quantiles when the costs of under-forecasting and over-forecasting differ. If the difference in costs is negligible, you may consider forecasting at the median quantile of 0.5 (P50) or use the WAPE metric, which is evaluated using the mean forecast. We want to prioritize over-forecasting and penalize under-forecasting.
 
   
