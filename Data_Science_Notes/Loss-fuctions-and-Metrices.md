@@ -49,9 +49,9 @@ It is used to evaluate the performance of the models on training as well as vali
 
 ### $\textcolor{orange}{\text{Regression}}$  (can be applied for forecasting as well) ###
 
-#### $\textcolor{orange}{\text{Regression: Loss Functions}}$ ####
+#### $\textcolor{darkorange}{\text{Regression: Loss Functions}}$ ####
 
-##### $\textcolor{lightblue}{\text{MSE (Mean Squared Error)}}$ #####
+##### $\textcolor{lightgreen}{\text{MSE (Mean Squared Error)}}$ #####
 Also called as L2 loss, this quadratic function although amplifies the error between prediction and actual value when they are close, but is not robust to presence of outliers in the data. It tends to favour mean of the target data. If a dataset is without outliers, it tends to outperform the model trained with L1 loss. However, the performance is impacted if there are outliers in the dataset.
 
   When to use: If we you can remove undesired outliers in the dataset and want a stable solution, then you should try L2 or MSE loss function.  
@@ -62,7 +62,7 @@ Also called as L2 loss, this quadratic function although amplifies the error bet
 
   Comparison of L1 and L2 losses with and without outliers: [Link](http://rishy.github.io/ml/2015/07/28/l1-vs-l2-loss/)
   
-##### $\textcolor{lightblue}{\text{MAE (Mean Absolute Error)}}$ #####
+##### $\textcolor{blue}{\text{MAE (Mean Absolute Error)}}$ #####
 Also known as L1 loss, this linear loss function is robust to outliers. Since it is not a differentiable function at 0, finding gradients involve more complicated techniques such as approximation of derivatives.
 
   When to use: If we need outliers present in the dataset, then we should go for L1 loss. Moreover, if the target data follows multimodal distribution, then we can experiment with L1 loss.  
@@ -76,7 +76,7 @@ Also known as L1 loss, this linear loss function is robust to outliers. Since it
   - Some algorithm implementations use approximate derivative or subgradients for that point where the derivative is not defined: [Link](https://datascience.stackexchange.com/questions/61743/when-using-absolute-error-in-gradient-descent-how-to-calculate-the-derivative)
   - More details on subgradients: [Link](https://people.csail.mit.edu/dsontag/courses/ml16/slides/notes_convexity16.pdf)
 
-##### $\textcolor{lightblue}{\text{Poisson Loss}}$ #####
+##### $\textcolor{yellow}{\text{Poisson Loss}}$ #####
 Poisson distribution:  
 A Poisson distribution helps us to predict the probability of certain events happening when you know how often the event has occurred. It gives us the probability of a given number of events happening in a fixed interval of time.
 
@@ -101,7 +101,7 @@ A Poisson distribution helps us to predict the probability of certain events hap
   - Article from Statisticshowto on poisson regression: [Link](https://www.statisticshowto.com/poisson-regression/)
   - Another article on poisson regression: [Link](https://peijin.medium.com/the-poisson-deviance-for-regression-d469b56959ce)  
 
-##### $\textcolor{orange}{\text{Huber Loss}}$ #####
+##### $\textcolor{gold}{\text{Huber Loss}}$ #####
 This function takes the good of both squared and absolute error loss functions. With a threshold error value, the loss is quadratic (or L2) for small error and linear (or L1) for larger error.  
 
   One big problem with using MAE is its constantly large gradient when using gradient decent for training. This can lead to missing minima at the end of training using gradient descent. While with MSE, gradient decreases as the loss gets close to its minima, making it more precise. Huber loss can be helpful here, as it curves around the minima which decreases the gradient.  
