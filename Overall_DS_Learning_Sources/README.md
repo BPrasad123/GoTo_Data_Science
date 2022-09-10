@@ -1,3 +1,14 @@
+- [Sources covering all](#sources-covering-all)
+- [Algorithm Specific](#algorithm-specific)
+  - [Graphical Models](#graphical-models)
+  - [Supervised](#supervised)
+  - [Trasformers](#trasformers)
+  - [Unsupervised](#unsupervised)
+    - [Clustering](#clustering)
+  - [Deep Learning](#deep-learning)
+- [MLOps](#mlops)
+- [Competitive Data Science](#competitive-data-science)
+
 ## Sources covering all ##
 
 - Daily updates on Data Science from ML Dojo: [Link](https://mohitmayank.com/themldojo/)

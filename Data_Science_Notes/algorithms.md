@@ -1,12 +1,18 @@
 ## Linear Regression ##
-
+- [Linear Regression](#linear-regression)
+- [Boosting Algorithm](#boosting-algorithm)
+- [Gradient descent](#gradient-descent)
+- [Clustering](#clustering)
+- [Weibull](#weibull)
 - **Linear Regression**  
-sklearn linear regression uses SVD for linear regression. If you want to use gradient descent, then use SGDRegressor. [Link](https://machinelearningcompass.com/machine_learning_models/linear_regression/)
 
-- **Why Lasso helps in feature selection, and Ridge not**  
-Mathematic explanation by PennState [Link](https://online.stat.psu.edu/stat508/lesson/5/5.4#:~:text=The%20lasso%20performs%20shrinkage%20so,axis%20is%20shrunk%20to%20zero.)  
-Intuitive explanation by Kent Munthe Caspersen: [Link](https://stats.stackexchange.com/questions/45643/why-l1-norm-for-sparse-models)  
-Good summary by Analytixlabs: [Link](https://www.analytixlabs.co.in/blog/regularization-in-machine-learning/)
+  sklearn linear regression uses SVD for linear regression. If you want to use gradient descent, then use SGDRegressor. [Link](https://machinelearningcompass.com/machine_learning_models/linear_regression/)
+
+- **Why Lasso helps in feature selection, and Ridge not**
+
+  Mathematic explanation by PennState [Link](https://online.stat.psu.edu/stat508/lesson/5/5.4#:~:text=The%20lasso%20performs%20shrinkage%20so,axis%20is%20shrunk%20to%20zero.)  
+  Intuitive explanation by Kent Munthe Caspersen: [Link](https://stats.stackexchange.com/questions/45643/why-l1-norm-for-sparse-models)  
+  Good summary by Analytixlabs: [Link](https://www.analytixlabs.co.in/blog/regularization-in-machine-learning/)
 
 ## Boosting Algorithm ##
 - **Overview**  
