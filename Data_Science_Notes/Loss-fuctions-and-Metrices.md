@@ -47,7 +47,7 @@ It is used to evaluate the performance of the models on training as well as vali
 - Loss functions and their properties - [Link](http://www.cs.cornell.edu/courses/cs4780/2015fa/web/lecturenotes/lecturenote10.html)
 
 
-### $\textcolor{orange}{\text{Regression (can be applied for forecasting as well)}}$
+### $\textcolor{orange}{\text{Regression (can be applied for forecasting as well)}}$ ###
 
 #### Regression: Loss Functions ####
 
