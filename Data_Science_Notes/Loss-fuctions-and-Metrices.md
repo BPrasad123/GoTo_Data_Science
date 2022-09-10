@@ -51,7 +51,7 @@ It is used to evaluate the performance of the models on training as well as vali
 
 #### $\textcolor{orange}{\text{Regression: Loss Functions}}$ ####
 
-##### $\textcolor{orange}{\text{MSE (Mean Squared Error)}}$ #####
+##### $\textcolor{lightblue}{\text{MSE (Mean Squared Error)}}$ #####
 Also called as L2 loss, this quadratic function although amplifies the error between prediction and actual value when they are close, but is not robust to presence of outliers in the data. It tends to favour mean of the target data. If a dataset is without outliers, it tends to outperform the model trained with L1 loss. However, the performance is impacted if there are outliers in the dataset.
 
   When to use: If we you can remove undesired outliers in the dataset and want a stable solution, then you should try L2 or MSE loss function.  
@@ -62,7 +62,7 @@ Also called as L2 loss, this quadratic function although amplifies the error bet
 
   Comparison of L1 and L2 losses with and without outliers: [Link](http://rishy.github.io/ml/2015/07/28/l1-vs-l2-loss/)
   
-##### $\textcolor{orange}{\text{MAE (Mean Absolute Error)}}$ #####
+##### $\textcolor{lightblue}{\text{MAE (Mean Absolute Error)}}$ #####
 Also known as L1 loss, this linear loss function is robust to outliers. Since it is not a differentiable function at 0, finding gradients involve more complicated techniques such as approximation of derivatives.
 
   When to use: If we need outliers present in the dataset, then we should go for L1 loss. Moreover, if the target data follows multimodal distribution, then we can experiment with L1 loss.  
@@ -76,7 +76,7 @@ Also known as L1 loss, this linear loss function is robust to outliers. Since it
   - Some algorithm implementations use approximate derivative or subgradients for that point where the derivative is not defined: [Link](https://datascience.stackexchange.com/questions/61743/when-using-absolute-error-in-gradient-descent-how-to-calculate-the-derivative)
   - More details on subgradients: [Link](https://people.csail.mit.edu/dsontag/courses/ml16/slides/notes_convexity16.pdf)
 
-##### $\textcolor{orange}{\text{Poisson Loss}}$ #####
+##### $\textcolor{lightblue}{\text{Poisson Loss}}$ #####
 Poisson distribution:  
 A Poisson distribution helps us to predict the probability of certain events happening when you know how often the event has occurred. It gives us the probability of a given number of events happening in a fixed interval of time.
 
@@ -155,9 +155,9 @@ This function takes the good of both squared and absolute error loss functions. 
 
 
 ###### $\textcolor{orange}{\text{Custom loss functions}}$ ######
-    Based on the business problem we might want to change the loss function so as to penalize more for certain data records during training. We can build a custom loss function and pass that to the model while fitting on the training data. However, please note that the loss function has to be differentiable and compatible with the algorithm it will be used with. Moreover, not all the algorithms support custom loss functions, especially sklearn algorithms.
+  Based on the business problem we might want to change the loss function so as to penalize more for certain data records during training. We can build a custom loss function and pass that to the model while fitting on the training data. However, please note that the loss function has to be differentiable and compatible with the algorithm it will be used with. Moreover, not all the algorithms support custom loss functions, especially sklearn algorithms.
   
-    * Sklearn algorithms -   
+  * Sklearn algorithms -   
     It is difficult to implement. For example most of the regressor models such as RandomForestRegressor in sklearn are inherited from the base class *RegressorMixin* and that uses *r-square* as the loss function.  
     Ref: [Stackoverflow](https://stackoverflow.com/questions/54267745/implementing-custom-loss-function-in-scikit-learn), [Github](https://github.com/scikit-learn/scikit-learn/issues/3071), [Kaggle](https://www.kaggle.com/questions-and-answers/172754)
   
@@ -184,22 +184,22 @@ This function takes the good of both squared and absolute error loss functions. 
     - [Blog by Kiwi Damien](https://kiwidamien.github.io/custom-loss-vs-custom-scoring.html)
 
 ###### $\textcolor{orange}{\text{Algorithm Specific Loss functions}}$ ######
-  **XGBOOST** supports following loss functions -  
-    - reg:squarederror: regression with squared loss.
-    - reg:squaredlogerror: regression with squared log loss. But because log function is employed, rmsle might output nan when prediction value is less than -1. Hence be careful for using this.
-    - reg:logistic: logistic regression
-    - reg:pseudohubererror: regression with Pseudo Huber loss, a twice differentiable alternative to absolute loss.
-    - reg:gamma: gamma regression with log-link. Output is a mean of gamma distribution. It might be useful, e.g., for modeling insurance claims severity, or for any outcome that might be gamma-distributed.
-    - reg:tweedie: Tweedie regression with log-link. It might be useful, e.g., for modeling total loss in insurance, or for any outcome that might be Tweedie-distributed.
-    - binary:logistic: logistic regression for binary classification, output probability
-    - binary:logitraw: logistic regression for binary classification, output score before logistic transformation
-    - binary:hinge: hinge loss for binary classification. This makes predictions of 0 or 1, rather than producing probabilities.
-    - count:poisson: Poisson regression for count data, output mean of Poisson distribution
-    - multi:softmax: set XGBoost to do multiclass classification using the softmax objective, you also need to set num_class(number of classes)
-    - multi:softprob: same as softmax, but output a vector of ndata * nclass. The result contains predicted probability of each data point belonging to each class.
-    - rank:pairwise, rank:ndcg, rank:map: For rank related use cases
-    - survival:cox, survival:aft, aft_loss_distribution: For survival related use cases  
-  Reference: [XGBOOST Docs](https://xgboost.readthedocs.io/en/stable/parameter.html)  
+**XGBOOST** supports following loss functions -  
+- reg:squarederror: regression with squared loss.
+- reg:squaredlogerror: regression with squared log loss. But because log function is employed, rmsle might output nan when prediction value is less than -1. Hence be careful for using this.
+- reg:logistic: logistic regression
+- reg:pseudohubererror: regression with Pseudo Huber loss, a twice differentiable alternative to absolute loss.
+- reg:gamma: gamma regression with log-link. Output is a mean of gamma distribution. It might be useful, e.g., for modeling insurance claims severity, or for any outcome that might be gamma-distributed.
+- reg:tweedie: Tweedie regression with log-link. It might be useful, e.g., for modeling total loss in insurance, or for any outcome that might be Tweedie-distributed.
+- binary:logistic: logistic regression for binary classification, output probability
+- binary:logitraw: logistic regression for binary classification, output score before logistic transformation
+- binary:hinge: hinge loss for binary classification. This makes predictions of 0 or 1, rather than producing probabilities.
+- count:poisson: Poisson regression for count data, output mean of Poisson distribution
+- multi:softmax: set XGBoost to do multiclass classification using the softmax objective, you also need to set num_class(number of classes)
+- multi:softprob: same as softmax, but output a vector of ndata * nclass. The result contains predicted probability of each data point belonging to each class.
+- rank:pairwise, rank:ndcg, rank:map: For rank related use cases
+- survival:cox, survival:aft, aft_loss_distribution: For survival related use cases  
+Reference: [XGBOOST Docs](https://xgboost.readthedocs.io/en/stable/parameter.html)  
 
 #### $\textcolor{orange}{\text{Regression: Evaluation Metrics}}$ ####
 The evaluation metrics as used to measure the performance of the model. They do not need to be differentiable as during the evaluation the gradients are not calculated. And of course the loss function can be used as an evaluation metric to judge the performance of the model. Depending upon the problem scenario and context the corresponding metric can be used to compare the model performance as explained below.
@@ -213,8 +213,7 @@ The evaluation metrics as used to measure the performance of the model. They do 
 
 ###### $\textcolor{orange}{\text{R-square}}$ (also known as coefficient of determination) ######
   How does the model perform against a simple prediction by taking average. With addition of new variable, the sum of squares that is in the denominator increases, hence the value of R square increases. However that does not mean the predictive power of the model increases. This will be a misleading conclusion.  
-  Ref:  
-  https://www.researchgate.net/post/Why_does_R_squared_increase_with_the_inclusion_of_an_interaction_term#:~:text=When%20you%20add%20another%20variable,increases%20your%20R%2Dsquared%20value.
+  Ref: [Researchgate](https://www.researchgate.net/post/Why_does_R_squared_increase_with_the_inclusion_of_an_interaction_term#:~:text=When%20you%20add%20another%20variable,increases%20your%20R%2Dsquared%20value.)
 
 ###### $\textcolor{orange}{\text{Adjusted R-square}}$ ######
   To rectify misleading behavior, R² is adjusted with the number of independent variables.
