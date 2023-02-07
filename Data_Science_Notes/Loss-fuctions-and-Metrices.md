@@ -1,6 +1,6 @@
 **Table Structure**  
 
-- [Cost Function vs Loss Function vs Objective Function vs Metrices](#cost-function-vs-loss-function-vs-objective-function-vs-metrices)
+- [**Cost Function vs Loss Function vs Objective Function vs Metrices**](#cost-function-vs-loss-function-vs-objective-function-vs-metrices)
   - [$\textcolor{darkorange}{\text{1. Regression}}$  (can be applied for forecasting as well)](#textcolordarkorangetext1-regression--can-be-applied-for-forecasting-as-well)
     - [$\textcolor{darkorange}{\text{1.1 Regression: Loss Functions}}$](#textcolordarkorangetext11-regression-loss-functions)
       - [$\textcolor{darkorange}{\text{1.1.1 MSE (Mean Squared Error)}}$](#textcolordarkorangetext111-mse-mean-squared-error)
@@ -26,49 +26,49 @@
       - [**Classification: Loss Functions**](#classification-loss-functions)
     - [Metrices](#metrices)
 
-# Cost Function vs Loss Function vs Objective Function vs Metrices #
+# Cost Function vs Loss Function vs Objective Function vs Metrics #
 
 In general Cost, Loss and Objective functions are interchangeably used. However to differentiate them technically here are the definitions.
 
 * **Loss Function**  
-It is a differentiable function that calculates loss for a training record.
+It is a differentiable function that calculates loss for a training record. It is used for training a model using optimization techniques such as Gradient Descent. 
 
 * **Cost Function**  
-It is the average of errors for all the records in the training set calculated by the loss function.
+It is the average error for all the records in training set calculated by the loss function.
 
 * **Objective Function**  
 Reduction of the cost is not the only purpose. That will make the model very well trained on the training data, that is overfitting. However, it has to be well generalized, for that we add regularization to the cost function that constitutes the objective function. However, in lot many cases, the loss function is considered as objective function as well.
 
-* **Metrices**  
-It is used to evaluate the performance of the models on training as well as validation and test datasets.
+* **Metrics**  
+Metrics are used to evaluate the performance of the models during testing as well as testing. Some of the metrics that are differentiable can be used as loss functions as well.
 
 **References**:  
 - General idea about loss, cost, metrices - [Link](https://www.baeldung.com/cs/cost-vs-loss-vs-objective-function)
 - Loss functions and their properties - [Link](http://www.cs.cornell.edu/courses/cs4780/2015fa/web/lecturenotes/lecturenote10.html)
 
 
-## $\textcolor{darkorange}{\text{1. Regression}}$  (can be applied for forecasting as well) ###
-
-### $\textcolor{darkorange}{\text{1.1 Regression: Loss Functions}}$ ####
+## $\textcolor{darkorange}{\text{1. Regression}}$ ###
+Note: Time series forecasting is also a regression problem with input data ordered by time. Depending on the algorithm, regression loss and metrics can be applicable for time series forecasting scenarios as well.
+### $\textcolor{darkorange}{\text{1.1 Loss Functions (Regression)}}$ ####
 
 #### $\textcolor{darkorange}{\text{1.1.1 MSE (Mean Squared Error)}}$ #####
 Also called as L2 loss, this quadratic function although amplifies the error between prediction and actual value when they are close, but is not robust to presence of outliers in the data. It tends to favour mean of the target data. If a dataset is without outliers, it tends to outperform the model trained with L1 loss. However, the performance is impacted if there are outliers in the dataset.
 
-  When to use: If we you can remove undesired outliers in the dataset and want a stable solution, then you should try L2 or MSE loss function.  
+When to use: If we you can remove undesired outliers in the dataset and want a stable solution, then you should try L2 or MSE loss function.  
 
-  Algorithm examples with L2 loss:  
-    - sklearn.linear_model.SGDRegressor with loss='squared_error'
-    - GradientBoostingRegressor(loss='ls')
+Algorithm examples with L2 loss:  
+  - sklearn.linear_model.SGDRegressor with loss='squared_error'
+  - GradientBoostingRegressor(loss='ls')
 
-  Comparison of L1 and L2 losses with and without outliers: [Link](http://rishy.github.io/ml/2015/07/28/l1-vs-l2-loss/)
+Comparison of L1 and L2 losses with and without outliers: [Link](http://rishy.github.io/ml/2015/07/28/l1-vs-l2-loss/)
   
 #### $\textcolor{darkorange}{\text{1.1.2 MAE (Mean Absolute Error)}}$ #####
 Also known as L1 loss, this linear loss function is robust to outliers. Since it is not a differentiable function at 0, finding gradients involve more complicated techniques such as approximation of derivatives.
 
-  When to use: If we need outliers present in the dataset, then we should go for L1 loss. Moreover, if the target data follows multimodal distribution, then we can experiment with L1 loss.  
+When to use: If we need outliers present in the dataset, then we should go for L1 loss. Moreover, if the target data follows multimodal distribution, then we can experiment with L1 loss.  
   
-  Algorithm examples with L1 loss:
-    - GradientBoostingRegressor(loss='lad')
+Algorithm examples with L1 loss:
+  - GradientBoostingRegressor(loss='lad')
 
   References:  
   - Short overview about MAE: [Link](https://peltarion.com/knowledge-center/documentation/modeling-view/build-an-ai-model/loss-functions/mean-absolute-error)
@@ -201,32 +201,41 @@ This function takes the good of both squared and absolute error loss functions. 
 - survival:cox, survival:aft, aft_loss_distribution: For survival related use cases  
 Reference: [XGBOOST Docs](https://xgboost.readthedocs.io/en/stable/parameter.html)  
 
-### $\textcolor{darkorange}{\text{1.2 Regression: Evaluation Metrics}}$ ####
+### $\textcolor{darkorange}{\text{1.2 Evaluation Metrics (Regression)}}$ ####
 The evaluation metrics as used to measure the performance of the model. They do not need to be differentiable as during the evaluation the gradients are not calculated. And of course the loss function can be used as an evaluation metric to judge the performance of the model. Depending upon the problem scenario and context the corresponding metric can be used to compare the model performance as explained below.
 
 #### $\textcolor{darkorange}{\text{1.2.1 MSE}}$ #####
+
 #### $\textcolor{darkorange}{\text{1.2.2 MEA}}$ #####
 #### $\textcolor{darkorange}{\text{1.2.3 RMSE}}$ #####
   The RMSE gives more importance to the large deviation of forecasting error, resulting in a higher RMSE value. Using the RMSE metric when a few large incorrect predictions from a model on some items can be very costly to the business.  
 
   You should use RMSE with caution, because a few large deviations in forecasting errors can severely punish an otherwise accurate model. For example, if one item in a large dataset is severely under-forecasted or over-forecasted, the error in that item skews the entire RMSE metric drastically, and may make you reject an otherwise accurate model prematurely. For use cases where a few large deviations are not of importance, consider using wQL or WAPE.  
 
-#### $\textcolor{darkorange}{\text{1.2.4 R-square}}$ (also known as coefficient of determination) #####
+#### $\textcolor{darkorange}{\text{1.2.4 RMSSE}}$ #####
+
+#### $\textcolor{darkorange}{\text{1.2.4 Normalised Root Mean Squared Error}}$ #####
+
+#### $\textcolor{darkorange}{\text{1.2.4 Weighted Absolute Percentage Error}}$ #####
+
+#### $\textcolor{darkorange}{\text{1.2.4 Weighted Mean Absolute Percentage Error}}$ #####
+
+#### $\textcolor{darkorange}{\text{1.2.5 R-square}}$ (also known as coefficient of determination) #####
   How does the model perform against a simple prediction by taking average. With addition of new variable, the sum of squares that is in the denominator increases, hence the value of R square increases. However that does not mean the predictive power of the model increases. This will be a misleading conclusion.  
   Ref: [Researchgate](https://www.researchgate.net/post/Why_does_R_squared_increase_with_the_inclusion_of_an_interaction_term#:~:text=When%20you%20add%20another%20variable,increases%20your%20R%2Dsquared%20value.)
 
-#### $\textcolor{darkorange}{\text{1.2.5 Adjusted R-square}}$ #####
+#### $\textcolor{darkorange}{\text{1.2.6 Adjusted R-square}}$ #####
   To rectify misleading behavior, R² is adjusted with the number of independent variables.
   
-#### $\textcolor{darkorange}{\text{1.2.6 MAPE (Mean Absolute Percentage Error)}}$ #####
+#### $\textcolor{darkorange}{\text{1.2.7 MAPE (Mean Absolute Percentage Error)}}$ #####
   It measures the error compared to the absolute value of the target value. However, if the actual value is zero, then it is impossible to calculate. Moreover, if the actual value is less and error is more, MAPE value is higher. The MAPE equally penalizes for under-forecasting or over-forecasting.  
   
   You can use MAPE for datasets where forecasting for all SKUs should be equally weighted regardless of sales volume. For example, a retailer may prefer to use the MAPE metric to equally emphasize forecasting errors on both items with low sales and items with high sales.  
 
-#### $\textcolor{darkorange}{\text{1.2.7 MASE (Mean Absolute Scaled Error)}}$ #####
+#### $\textcolor{darkorange}{\text{1.2.8 MASE (Mean Absolute Scaled Error)}}$ #####
   Ratio of MAE and average of naive error (if predicted number is same as the last instance). If less than 1 then it performs better than naive method. The MASE is a scale-free metric, which makes it useful for comparing models from different datasets. It is recommended to use the MASE metric when you are interested in measuring the impact of seasonality on your model. If your dataset does not have seasonality, we recommend using other metrics.
 
-#### $\textcolor{darkorange}{\text{1.2.8 Quantile Loss}}$ #####
+#### $\textcolor{darkorange}{\text{1.2.9 Quantile Loss}}$ #####
   Go with weighted QL measure at different quantiles when the costs of under-forecasting and over-forecasting differ. If the difference in costs is negligible, you may consider forecasting at the median quantile of 0.5 (P50) or use the WAPE metric, which is evaluated using the mean forecast. We want to prioritize over-forecasting and penalize under-forecasting.
 
   
@@ -443,4 +452,6 @@ https://towardsdatascience.com/forecast-kpi-rmse-mae-mape-bias-cdc5703d242d
 https://towardsdatascience.com/why-not-mse-as-a-loss-function-for-logistic-regression-589816b5e03c
 
 https://towardsdatascience.com/multi-class-metrics-made-simple-the-kappa-score-aka-cohens-kappa-coefficient-bdea137af09c
+
+## **Clustering** ###
 
