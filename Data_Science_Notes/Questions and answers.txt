@@ -1,0 +1,195 @@
+One Hot and Dummies - Dummy variable trap
+----------------------
+N cols for N values in cas of one hot. N-1 for N values in dummies.
+
+in the case of a linear regression model (and other regression models that have a bias term), a one hot encoding will case the matrix of input data to become singular, meaning it cannot be inverted and the linear regression coefficients cannot be calculated using linear algebra. For these types of models a dummy variable encoding must be used instead.
+
+One-hot encoding is a good choice for
+Problems with only a few "levels" (distinct values that a category can take, e.g. the number of species in our example)
+Linear models with any number of levels
+Problems where the different levels are known (or you are unlikely to encounter new levels on your testing set)
+
+Tree-based models, such as Decision Trees, Random Forests, and Boosted Trees, typically don't perform well with one-hot encodings with lots of levels. This is because they pick the feature to split on based on how well that splitting the data on that feature will "purify" it. If we have a lot of levels, only a small fraction of the data (typically) will belong to any given level, so the one-hot encoded columns will be mostly zeros. Since splitting on this column will only produce a small gain, tree-based algorithms typically ignore the information in favor of other columns. This problem persists, regardless of the volume of data you actually have.
+
+There are several problems in using sparse data to train a machine learning model. If the data is too sparse, it can increase the complexity of the machine learning model. This means that the model will take up more storage space and take longer to process.
+
+Linear models don't suffer from this problem. Each level gets its own coefficient, so in statistics terms you are "using up a degree of freedom" for each level of your feature. This is a problem with any encoding with many features, but with enough data, a linear model can support a large number of categories. A good solution to this problem if you have limited dataa is to see if you can cluster some of you levels together.
+
+This leads to non-uniqueness and inability to interpret the coefficients uniquely, as we can change the coefficients by changing the intercept as well. This is called the dummy variable trap.
+
+But one-hot encoding also presents two problems that are more particular to tree-based models:
+
+    The resulting sparsity virtually ensures that continuous variables are assigned higher feature importance.
+    A single level of a categorical variable must meet a very high bar in order to be selected for splitting early in the tree building. This can degrade predictive performance.
+
+
+
+There are two reasons I dislike the dropping a variable:
+	Introduces a bias toward the dropped variable when regularizing
+	Makes dealing with new levels difficult
+
+pd.get_dummies is Evil, Use Category Encoders Instead
+
+https://kiwidamien.github.io/are-you-getting-burned-by-one-hot-encoding.html
+
+Impact of correlated features
+------------------------------
+
+
+
+
+Vanishing Gradient Problem
+------------------------------
+With the chain rule of partial derivatives, we can represent gradient of the loss function as a product of gradients of all the activation functions of the nodes with respect to their weights.Therefore, the updated weights of nodes in the network depend on the gradients of the activation functions of each node.
+
+For the nodes with sigmoid activation functions, we know that the partial derivative of the sigmoid function reaches a maximum value of 0.25. When there are more layers in the network, the value of the product of derivative decreases until at some point the partial derivative of the loss function approaches a value close to zero, and the partial derivative vanishes. We call this the vanishing gradient problem.
+
+How to avoid:
+	1. replace the activation function of the network. Instead of sigmoid, use an activation function such as ReLU. Gradient of ReLU is 1 if positive else 0 for negative.
+	2. Weight initialization so that during back propagation the values 
+
+How LSTM solves it:
+	The error gradient contains the forget gate vector that allows better over the gradient values at each time step avoiding vanishing gradient problem.
+
+
+Exploding Gradient problem
+---------------------------
+If the gradients are large, the multiplication of these gradients will become huge over time. This results in the model being unable to learn and its behavior becomes unstable. This problem is called the exploding gradient problem.
+
+How to solve:
+	1. L2 regularization or weight decay
+	2. Gradient clipping
+
+
+
+CBOW and Skip-gram
+--------------------
+Context to predict a target word (a method known as continuous bag of words, or CBOW), or using a word to predict a target context, which is called skip-gram
+
+
+PCA
+----------------------
+When to use and not use PCA
+
+https://crunchingthedata.com/when-to-use-principal-component-analysis/
+
+
+How to handle categorical features
+-----------------------------------
+
+
+LightGBM can handle categorical features by taking the input of feature names. It offers good accuracy with integer-encoded categorical features. LightGBM applies Fisher (1958) to find the optimal split over categories as described here . This often performs better than one-hot encoding.
+
+
+Sparsity in the data
+---------------------------------
+
+Changing the missing parameter to 0 results in a significant reduction of training time. More precisely, we observed a 40× speedup for exact and approx on the full dataset, and a 10× speedup for hist.
+
+https://blog.dataiku.com/how-do-gradient-boosting-algorithms-handle-categorical-variables
+
+
+Categorical encoding
+---------------------
+https://towardsdatascience.com/dealing-with-categorical-variables-by-using-target-encoder-a0f1733a4c69#:~:text=Target%20encoding%20categorical%20variables%20solves,that%20suits%20your%20case%20better.
+
+Always use category_encoders library
+
+Hashing:
+	Hash Encoding represents the categorical data into numerical value by the hashing function. Hashing is often used in data encryption or data comparison, but the main part is still similar — transform one feature to another using hashing function
+
+
+Hyperparameter tuning
+----------------------
+Optuna
+
+HyperOpt
+
+https://neptune.ai/blog/optuna-vs-hyperopt
+
+
+When to use which un-supervised algorithm
+-----------------------------------------
+
+
+
+Correlation studies
+------------------------
+
+Generally, a significant factor or alpha value of 0.05 is chosen. This alpha value denotes the probability of erroneously rejecting H0 when it is true. A lower alpha value is chosen in cases when we expect more precision. If the p-value for the test comes out to be strictly greater than the alpha value, then we will accept our H0.
+
+
+Categorical columns -
+Use chi-square test from scipy
+
+
+What are macro, micro and weighted average in F1 score for multi-classification
+-------------------------------------------------------------------------------
+Macro averaging: first calculate the f1 score for each individual class
+Weighted averaging: multiply weights with corresponding f1-scores and then do macro/arithmatic averaging
+Micro averaging: first get the aggregated values for Recall and Precision and then calculate F1-score
+
+
+How to handle imbalance problem
+--------------------------------
+Use class weights - to deal at the training time
+Use smote techniques - to deal at data level
+Use custom loss - to deal during training time
+Use weighted F1-score - to evaluate as per business importance
+Use MCC - to evaluate in general
+
+
+What is AUC-ROC
+-----------------
+AUC-ROC is generally used for binary classifications, although that can be extended to multi-class classification as well.
+ROC (Receiver Operator Charactorstic): Plots TPR vs FPR at different thresholds, thereby shows model performance at those thresholds.
+AUC (Area under curve): The area summarizes the performance of the classifier. Higher AUC, higher is the capacity of the model to separate Positive and Negative classes.
+
+TPR: TP / (TP + FN) = Recall = Sensitivity
+FPR: FP / (FP + TN) = 1 - Specificity (True negativity rate)
+
+Specificity: True Negative Rate = TN / (TN + FP)
+
+Used to find optimal threshold value.
+
+
+Eigenvalue and Eigenvector
+---------------------------
+Eigenvalue: Direction in which the linear transformation of the vectors happen
+Eigenvector: The process of linear transformation
+
+
+Regularization
+-----------------------
+Purpose: To reduce overfitting
+
+Data wise:
+	Data augmentation
+	Keeping only relevant features
+
+Loss function wise:
+	Add L2 regularization
+	Add L1 regularization
+	Idea: Weight magintude denotes the important to some features. It reduces the weights magnitude there by reduces the importance given to noise.
+	
+Training:
+	K-fold Cross validation to stop the training at the right moment.
+	Dropout: In neural network
+
+
+Bias Variance Trade Off
+-------------------------
+
+Bias = average difference in the ground truth values and predicted values = model under performs
+Variance = variance in the predicted values = model picks up noise in the data and learns complexity
+
+Increasing variance reduces bias and vice versa. We need to find an optimal where the model learns the pattern only for better generalization.
+
+Technique: Regularization
+
+
+
+
+
+
+
