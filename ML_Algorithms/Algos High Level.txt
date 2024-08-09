@@ -1,0 +1,462 @@
+Algos
+=======================
+Linear Regression
+-------------------
+Assumptions:
+	Linear relationship between input and output
+	No multi correlation
+	No outliers
+	No auto correlation
+	Residuals follow normal distribution
+	Homoscedaticity of residuals
+
+Solver:
+	OLS
+	Maximum Likelihood Estimation
+	SGD
+
+Implementations:
+	sklearn.linear_model.LinearRegression: OLS
+	Other linear models:
+		sklearn.linear_model.Ridge: ‘auto’, ‘svd’, ‘cholesky’, ‘lsqr’, ‘sparse_cg’, ‘sag’, ‘saga’, ‘lbfgs’
+		sklearn.linear_model.SGDRegressor: Can choose l1, l2 and elasticnet
+		sklearn.linear_model.ElasticNet: Helps in feature selection
+		sklearn.linear_model.Lasso: Helps in feature selection
+		sklearn.linear_model.HuberRegressor: Robust to outliers
+
+Evalaution:
+	Coefficient of determination (R square)
+
+
+Logistic Regression
+--------------------
+Assumptions:
+	No multicorrelation
+
+Function:
+	Sigmoid or logistic function
+
+Solver:
+	Liklihood function differentiated by Newton method
+
+Implementations:
+	sklearn.linear_model.LogisticRegression: ‘lbfgs’, ‘liblinear’, ‘newton-cg’, ‘newton-cholesky’, ‘sag’, ‘saga’
+	Other linear models:
+		sklearn.linear_model.RidgeClassifier: Classifier with Ridge Regression. ‘auto’, ‘svd’, ‘cholesky’, ‘lsqr’, ‘sparse_cg’, ‘sag’, ‘saga’, ‘lbfgs’
+		sklearn.linear_model.SGDClassifier: ‘hinge’, ‘log_loss’, ‘log’, ‘modified_huber’, ‘squared_hinge’, ‘perceptron’, ‘squared_error’, ‘huber’, ‘epsilon_insensitive’, 								‘squared_epsilon_insensitive’
+
+Hyperparameters to tune:
+	C in [100, 10, 1.0, 0.1, 0.01, 0.001] [For Logistic Regression]
+	alpha in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0] [For Ridge Classifier]
+	Solver
+	Regularization strength: l1 or l2
+
+SVM
+-------------
+Usage: 
+	Classification - sklearn.svm.SVC
+	Regression - sklearn.svm.SVR
+
+Mechanism:
+Hyperplanes separating input space into different classes. Distance from hyperplane to closest data point is called as margin. Hyperplanes can be linear or non-linear governed by kernel.
+kernels -
+	linear - regularization with C (how tolerant to misclassification) value
+	rbf (radial basis function) - gamma (how correctly classification is done)
+	poly - degree
+optimization - non-convex function and uses geometric obtimization 
+
+Techniques:
+	Scaling help improve the performance
+	
+Assumptions:
+	None
+
+Pros and Cons:
+	Pros -
+		When data is clearly separable
+		When number of features is higher than number of observations
+		Effective for high dimension space
+		Less memory footprint
+	Cons -
+		Not good for high volume of data
+		Not good for noisy data
+
+http://www.csie.ntu.edu.tw/~cjlin/papers/guide/guide.pdf
+
+
+Hyperparameters to tune:
+	kernels in [‘linear’, ‘poly’, ‘rbf’, ‘sigmoid’]
+	C (penalty) in [100, 10, 1.0, 0.1, 0.001]
+
+Naive Bayes
+-------------
+Usage:
+	Classification - sklearn.naive_bayes.GaussianNB
+
+Mechanishm:
+	Probabilistic model that uses Naive Bayes probability for the prediction of unknown class.
+
+Optimization: 
+	var_smoothing
+
+Assumptions:
+	No correlation in the data
+
+Pros and cons:
+	Pros -
+		Fast, good for large amount of data
+
+
+KNN
+---------------
+Steps:
+	Can be used for both classification and regression
+	Find k number of nearest members. Use their mode/mean for prediction
+	Plot between k and validation error and choose k accordingly.
+
+Cons:
+	Entire data needs to fit in memory
+	Sensitive to outliers and imbalanced datasets
+	May not work well with high dimension data
+
+Hyperparameters to tune:
+	n_neighbors in [1 to 21]
+	metric in [‘euclidean’, ‘manhattan’, ‘minkowski’]
+	weights in [‘uniform’, ‘distance’]
+
+
+Decision Trees
+--------------
+Types:
+	CHID - Oldest not in use any more
+	ID3 - uses Information Gain (in terms of entropy). Information Gain is the decrease or increase in Entropy value when the node is split. Only Classification.
+	C4.5 - Improved version of ID3. It uses Gain Ratio that is normalization of Information Gain to handle bias.
+	CART - Uses Gini Index and Gini gain. Gini Index: The probability of assigning a wrong label to a sample by picking the label randomly. Gini Gain = Gini (parent node) - Gini(child node). CART can also handle regression problem using a different splitting criterion: Mean Squared Error (MSE) to determine the splitting points. Supports both Classification and Regression.
+
+Usage:
+	Sklearn comes with CART only.
+	Classification - DecisionTreeClassifier (criterion{“gini”, “entropy”, “log_loss”}, default=”gini”)
+	Regression - DecisionTreeRegressor (criterion{“squared_error”, “friedman_mse”, “absolute_error”, “poisson”}, default=”squared_error”) 
+
+Mechanism:
+	 - No matter which decision tree algorithm you are running: ID3, C4.5, CART, CHAID or Regression Trees. They all look for the feature offering the highest information gain. Then, 			they 	add a decision rule for the found feature and build an another decision tree for the sub data set recursively until they reached a decision.
+
+Hyperparameters to tune:
+	max_max_features [1 to 20, ‘sqrt’, ‘log2’]
+	min_samples_split
+	min_samples_leaf
+	max_features
+	min_impurity_decrease
+
+https://www.vebuso.com/2020/01/decision-tree-intuition-from-concept-to-application/
+https://sefiks.com/2018/08/27/a-step-by-step-cart-decision-tree-example/
+
+
+Random Forest
+--------------
+Usage:
+	RandomForestRegressor (criterion{“squared_error”, “absolute_error”, “friedman_mse”, “poisson”}, default=”squared_error”)
+	RandomForestClassifier (criterion{“gini”, “entropy”, “log_loss”}, default=”gini”)
+
+Mechanism:
+	Uses a collection of trees
+	Random sample of observations for each individual tree
+	For each node in the individual tree random features are selected to make the trees uncorrelated
+	Bootstrapping the data and then using an aggregate to make a prediction is called Bagging
+	Maximum voting or taking the averages of predictions for final prediction
+	
+
+Optimization:
+	If overfit, then increase n_estimators and decrease max depth.
+
+Hyperparameters:
+	max_depth
+	min_samples_leaf
+	min_samples_split
+	max_features [1 to 20, ‘sqrt’, ‘log2’, p/3]
+	max_leaf_nodes
+	n_n_estimators in [10, 100, 1000]
+
+Note: Bootstrapping is sampling with replacements.
+
+https://towardsdatascience.com/random-forest-explained-7eae084f3ebe
+
+
+Boosting
+--------------
+Usage:
+	AdaBoost
+	Gradient Boosting Machine
+	XGBOOST
+	LightGBM
+	Catboost
+
+Difference:
+	XGBoost applies level-wise (horizontal) tree growth whereas LightGBM applies leaf-wise tree growth (vertically) and this makes LightGBM faster. The leaf-wise algorithm chooses the leaf with maximum reduction in the loss function. This function was later added to XGBoost as well.
+
+	LightGBM uses gradient-based one side sampling (GOSS) to filter out data instances for finding the best split value
+
+
+https://medium.com/swlh/dealing-with-categorical-variables-in-machine-learning-4401b949b093
+
+https://towardsdatascience.com/what-is-boosting-in-machine-learning-2244aa196682
+
+
+
+
+
+LightGBM
+---------------------
+Boosting techniques:
+	GBDT - Traditional one. Stable, slow but efficient.
+	DART - Uses dropout on trees. More accurate but too many settings.
+	GOSS (Gradient-based one side sampling) - Difficult data points have larger gradient, hence model samples from data with larger gradients. Fast and converges faster.
+	RF - Behaves like Random Forest
+
+Uses leaf-wise growth technique, hence prone to overfitting.
+
+Use to handle overfitting:
+	Small max_bin
+	small num_leaves
+	min_data_in_leaf
+	bagging_fraction
+	feature_fraction
+	bigger training data
+	max_depth
+	lamda_l1, lambda_l2
+	min_gain_to_split
+
+Recommendations:
+	use smaller learning_rate with larger num_iterations
+	early_stopping_rounds
+	set categorical feature manually
+	is_unbalance vs scale_pos_weight
+
+
+Missing values:
+	default NAN. 
+	During training: For numeric, assign to side resulting in more loss in error. For categorical assign to right
+	During prediction: For numeric, assign to zero. For categorical, if seen already then left of split else right
+
+Categorical encoding:
+	Integer encoding and fisher technique used to find optimal split
+
+https://neptune.ai/blog/lightgbm-parameters-guide
+https://practicaldatascience.co.uk/machine-learning/how-to-tune-a-lightgbmclassifier-model-with-optuna
+https://github.com/microsoft/LightGBM/issues/2921
+
+
+XGBOOST
+---------------------
+Boosting techniques:
+	gbtree
+	dart
+	gblinear
+
+Uses:
+	Weighted Quantile Sketch to find effective split point by finding candidates with high gradient statistics
+
+Use to handle overfitting:
+	Use learning curve to tune manually.
+	The first way is to directly control model complexity.
+		This includes max_depth, min_child_weight and gamma.
+	The second way is to add randomness to make training robust to noise.
+		This includes subsample and colsample_bytree.
+		You can also reduce stepsize eta. Remember to increase num_round when you do so.
+
+Fine tuning:
+	n_estimators
+	max_depth
+	learning_rate
+	subsample
+	colsample_bytree
+	gamma (either 0, 1 or 5)
+
+Missing values:
+	branch directions for missing values are learned during training.
+
+XGBoost: A Sparsity-Aware Algorithm -
+	Any value can be declared as missing so that the algorithm takes care of it.
+
+Recommendations:
+	it seems recommended to set the tree method of XGBoost to hist when dealing with large datasets, as it decreases the training time a lot without affecting the performance
+
+
+Use RandomSearchCV
+
+https://machinelearningmastery.com/tune-xgboost-performance-with-learning-curves/
+
+https://www.kaggle.com/code/prashant111/a-guide-on-xgboost-hyperparameters-tuning
+
+https://towardsdatascience.com/fine-tuning-xgboost-in-python-like-a-boss-b4543ed8b1e
+
+https://blog.dataiku.com/how-do-gradient-boosting-algorithms-handle-categorical-variables
+
+
+PCA
+-----
+If there is linear relationship among the vectors, those are projected into smalled dimensions with eigen values and eigen vectors using covariance matrix.
+
+
+
+So many disadvantages:
+	assumes linearity among features
+	cannot handle missing values
+	sensitive to outliers
+	need to rescale features
+	suitable for continuous data only
+	not interpretability
+
+Steps:
+1. Standardize the datapoints
+2. Find the covariance matrix from the given datapoints
+3. Carry out eigen-value decomposition of the covariance matrix
+4. Sort the eigenvalues and eigenvectors
+
+https://crunchingthedata.com/when-to-use-principal-component-analysis/
+
+
+
+
+Naive Baye's Rule
+------------------
+Bayes rule: P(A | B) = P(A and B together) / P (B)
+Naive Bayes is called naive because it assumes that each input variable is independent.
+
+
+Cosine Similarity
+-----------------
+Use dot product of the metrices to get the cosine similiarity that ranges from 0 to 1.
+
+Edit Distance
+----------------
+Delete, insert or replace each character in the word string and match against a pre-decided vocabulary.
+Cost for delete = 1, insert = 1 and replace = 2
+
+
+Viterbi Algorithm
+------------------
+Efficient way of finding the next word with highest probability.
+This algorithm makes use of both transition matrix and emission matrix from Hidden Markov Model.
+
+N-gram, Skip Gram and CBOW, Word2vec
+------------------------------------
+N-gram: A sequence of words
+CBOW: From a set of context words predict the middle word
+Skip Gram: From a word predict the context
+Either CBOW or Skip Gram is used to train word2vec
+
+A shallow network with 2 layers were trained to create word embeddings.
+
+Word2Vec guidance is vague on this and suggests between 100 and 1000. Typically more dimensions = greater quality encoding, but there will be some limit beyond which you'll get diminishing returns. We typically use 200 or 300.
+
+
+Isolation Forest
+-----------------
+Data partitioning is done using a set of trees. Isolation Forest provides an anomaly score looking at how isolated the point is in the structure. The anomaly score is then used to identify outliers from normal observations
+
+Unsupervised algo and individual trees are binary trees. All the data points making it the depth of the RF tree are normal and the ones ending up with leaf nodes eary are treated as anomaly. 
+
+-1 assigned to anomaly. +1 type assigned to normal data points. Different contamination parameter to be tried and data needs to be visualized and can be decided based on business context.
+
+
+
+Outlier Detection
+-----------------
+Conventional:
+	Using IQR (q3 - q1): q1 - 1.5xIQR, q3 + 1.5xIQR
+	Using SD: mean +- 3xSD
+
+
+PyOD Library:
+	Angle based
+	KNN based
+	Isolation Forest
+
+https://www.analyticsvidhya.com/blog/2019/02/outlier-detection-python-pyod/
+
+
+
+Affinity Propagation
+--------------------
+
+The key idea behind Affinity Propagation is that each data point can both act as an exemplar (representative) of its own cluster, and can also have a preference for being the exemplar of other data points. The algorithm seeks to find the exemplars that result in the highest total preference among all data points.
+
+Algorithm by passing messages between data points.
+
+Damping: Extennt to which current value is maintained with addition of new values.
+
+
+Agglomorative Hierarchical Clustering
+---------------------------------------
+Group clusters based on their similarity (using  euclidean)
+
+Starts with singletone clusters, merges pairs of closest clusters of until one big cluster is created.
+
+AgglomerativeClustering(n_clusters = 5, affinity = 'euclidean', linkage ='ward')
+
+Use dendograms, find the longest vertical line without crossing horizental lines.
+
+Ward Linkage — Determines the distance between clusters using the analysis of variance method
+
+Cannot handle outliers well.
+
+
+
+K-MEANS
+----------------
+
+Steps:
+	Randomly assign predefined number of clusters.
+	Data points assigned to their nearest cluster centroids.
+	Recalculate the cetroids and repeat the steps until the centroids are not moving.
+
+Optimize
+	n_init: 10 for initial
+	tol: keep it low
+	max_iter: There are n_init runs in general and each run iterates max_iter times
+Initialization:
+	Kmeans++
+
+Elbow method to choose the number of clusters.
+
+Evaluation:
+	Dunn index. Ratio of minimum inter cluster distance to maximum of intra cluster distance. Higher the better.
+
+https://www.kdnuggets.com/2020/06/centroid-initialization-k-means-clustering.html
+
+
+DBSCAN
+--------------------
+
+Two parameters:
+	epslon: Radius of a data point to check density (smaller... 0.3)
+	minpoints: min number of points required in the hypersphere for that point to be called core. (range: dimension+1 to 2xdimension)
+
+Robust to outliers.
+
+https://www.kdnuggets.com/2020/04/dbscan-clustering-algorithm-machine-learning.html
+
+
+Isolation Forest
+------------------
+In an Isolation Forest, randomly sub-sampled data is processed in a tree structure based on randomly selected features. The samples that travel deeper into the tree are less likely to be anomalies as they required more cuts to isolate them. Similarly, the samples which end up in shorter branches indicate anomalies as it was easier for the tree to separate them from other observations.
+
+algorithm step by step:
+When given a dataset, a random sub-sample of the data is selected and assigned to a binary tree.
+Branching of the tree starts by selecting a random feature (from the set of all N features) first. And then branching is done on a random threshold ( any value in the range of minimum and maximum values of the selected feature).
+If the value of a data point is less than the selected threshold, it goes to the left branch else to the right. And thus a node is split into left and right branches.
+This process from step 2 is continued recursively till each data point is completely isolated or till max depth(if defined) is reached.
+The above steps are repeated to construct random binary trees.
+
+-1 is assigned to anomalies
+
+
+
+
+
+
+
+
+
+
